@@ -1,0 +1,59 @@
+﻿@model IEnumerable<HotelPractice.ViewModel.Hotel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("新增資料", "Create", new { }, new { @class = "btn btn-info" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HtlTel)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HtlAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HtlPic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HtlByteImage)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HotelName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HtlTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HtlAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HtlPic)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.HtlByteImage)*@
+            @*<img src="@Url.Action("GetImage", "Hotel", new {fileName=item.HtlPic })" class="img-thumbnail thumb" title="product image" />*@
+            <img src="@Url.Action("GetImageByte", "Hotel", new { id = item.HotelId })" class="img-thumbnail thumb" title="bytes image" />
+        </td>
+        <td>
+            @Html.ActionLink("修改", "Edit", new { id=item.HotelId  }, new { @class = "btn btn-primary btn-sm" }) |
+            @Html.ActionLink("明細", "Details", new { id=item.HotelId }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("刪除", "Delete", new { id=item.HotelId }, new { @class = "btn btn-danger btn-sm" })
+        </td>
+    </tr>
+}
+
+</table>

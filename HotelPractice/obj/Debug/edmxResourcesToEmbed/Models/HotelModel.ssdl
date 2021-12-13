@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="HotelMaster">
+    <Key>
+      <PropertyRef Name="HotelId" />
+    </Key>
+    <Property Name="HotelId" Type="int" Nullable="false" />
+    <Property Name="HotelName" Type="nvarchar" MaxLength="50" />
+    <Property Name="HtlTel" Type="nvarchar" MaxLength="50" />
+    <Property Name="HtlAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="HtlPic" Type="nvarchar(max)" />
+    <Property Name="HtlByteImage" Type="image" />
+  </EntityType>
+  <EntityType Name="RoomMaster">
+    <Key>
+      <PropertyRef Name="HotelId" />
+    </Key>
+    <Property Name="HotelId" Type="int" Nullable="false" />
+    <Property Name="TotalRoom" Type="int" />
+    <Property Name="CheckInRoom" Type="int" />
+  </EntityType>
+  <EntityContainer Name="HotelModelStoreContainer">
+    <EntitySet Name="HotelMaster" EntityType="Self.HotelMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoomMaster" EntityType="Self.RoomMaster" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

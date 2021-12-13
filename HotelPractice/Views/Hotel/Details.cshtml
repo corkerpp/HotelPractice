@@ -1,0 +1,52 @@
+﻿@model HotelPractice.Models.HotelMaster
+
+@{
+    ViewBag.Title = "明細";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>HotelMaster</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HotelName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HotelName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HtlTel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HtlTel)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HtlAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HtlAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HtlPic)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.HtlPic)*@
+            @*<img src="@Url.Content(Model.HtlPic)" alt="Image" />*@
+            <img src="@Url.Action("GetImageByte", "Hotel", new { id =    ViewBag.id })" class="img-thumbnail thumb" title="bytes image" />
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HotelId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
